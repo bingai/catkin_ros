@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sample_move_arm")
+set(sample_move_arm_MAINTAINER "Scott Niekum <sniekum@cs.utexas.edu>")
+set(sample_move_arm_DEPRECATED "")
+set(sample_move_arm_VERSION "0.0.0")
+set(sample_move_arm_BUILD_DEPENDS "roscpp" "rospy" "rosbag" "pluginlib" "moveit_core" "moveit_ros_planning_interface" "moveit_ros_perception" "interactive_markers")
+set(sample_move_arm_RUN_DEPENDS "roscpp" "rospy" "pluginlib" "moveit_core" "moveit_fake_controller_manager" "moveit_ros_planning_interface" "moveit_ros_perception" "interactive_markers" "rosbag")
+set(sample_move_arm_BUILDTOOL_DEPENDS "catkin")
