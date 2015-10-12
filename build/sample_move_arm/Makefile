@@ -147,90 +147,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_cpp: sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : actionlib_msgs_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-.PHONY : actionlib_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_lisp: sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : actionlib_msgs_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_py: sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : actionlib_msgs_generate_messages_py
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-.PHONY : actionlib_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_py: sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : geometry_msgs_generate_messages_py
-
-# fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 sample_move_arm/CMakeFiles/move_arm.dir/rule:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/move_arm.dir/rule
 .PHONY : sample_move_arm/CMakeFiles/move_arm.dir/rule
@@ -399,132 +315,6 @@ octomap_msgs_generate_messages_py/fast:
 .PHONY : octomap_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
 .PHONY : sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
@@ -565,90 +355,6 @@ shape_msgs_generate_messages_py: sample_move_arm/CMakeFiles/shape_msgs_generate_
 shape_msgs_generate_messages_py/fast:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/shape_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/shape_msgs_generate_messages_py.dir/build
 .PHONY : shape_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_cpp: sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
-.PHONY : topic_tools_generate_messages_cpp
-
-# fast build rule for target.
-topic_tools_generate_messages_cpp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
-.PHONY : topic_tools_generate_messages_cpp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_lisp: sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-.PHONY : topic_tools_generate_messages_lisp
-
-# fast build rule for target.
-topic_tools_generate_messages_lisp/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
-.PHONY : topic_tools_generate_messages_lisp/fast
-
-# Convenience name for target.
-sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/rule:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-.PHONY : sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_py: sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-.PHONY : topic_tools_generate_messages_py
-
-# fast build rule for target.
-topic_tools_generate_messages_py/fast:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/topic_tools_generate_messages_py.dir/build
-.PHONY : topic_tools_generate_messages_py/fast
 
 # Convenience name for target.
 sample_move_arm/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
@@ -722,13 +428,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... actionlib_msgs_generate_messages_lisp"
-	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... edit_cache"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -746,25 +446,10 @@ help:
 	@echo "... octomap_msgs_generate_messages_lisp"
 	@echo "... octomap_msgs_generate_messages_py"
 	@echo "... rebuild_cache"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... shape_msgs_generate_messages_cpp"
 	@echo "... shape_msgs_generate_messages_lisp"
 	@echo "... shape_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
-	@echo "... topic_tools_generate_messages_cpp"
-	@echo "... topic_tools_generate_messages_lisp"
-	@echo "... topic_tools_generate_messages_py"
 	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... trajectory_msgs_generate_messages_py"

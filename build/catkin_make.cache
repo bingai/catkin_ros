@@ -1,2 +1,2 @@
-sample_move_arm
+ar_track_alvar:ar_track_alvar_msgs:sample_move_arm
 -DCATKIN_DEVEL_PREFIX=/home/rahul/git/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rahul/git/catkin_ws/install
