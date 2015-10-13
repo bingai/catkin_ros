@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(sample_move_arm_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "" STREQUAL "")
+if(NOT "/home/rahul/git/catkin_ws/devel/include" STREQUAL "")
   set(sample_move_arm_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/rahul/git/catkin_ws/devel/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -145,7 +145,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(sample_move_arm_EXPORTED_TARGETS "")
+set(sample_move_arm_EXPORTED_TARGETS "sample_move_arm_generate_messages_cpp;sample_move_arm_generate_messages_lisp;sample_move_arm_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${sample_move_arm_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -153,7 +153,7 @@ foreach(t ${sample_move_arm_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "moveit_core;moveit_ros_planning_interface;interactive_markers;rosbag;roscpp;geometry_msgs;ar_track_alvar;visualization_msgs")
+set(depends "moveit_core;moveit_ros_planning_interface;interactive_markers;rosbag;roscpp;geometry_msgs;ar_track_alvar;visualization_msgs;message_runtime;std_msgs;geometry_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -182,7 +182,7 @@ foreach(depend ${depends})
   list(APPEND sample_move_arm_EXPORTED_TARGETS ${${sample_move_arm_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "sample_move_arm-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${sample_move_arm_DIR}/${extra})

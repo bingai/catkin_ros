@@ -3,6 +3,6 @@ prefix=/home/rahul/git/catkin_ws/install
 Name: sample_move_arm
 Description: Description of sample_move_arm
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/rahul/git/catkin_ws/install/include
 Libs: -L/home/rahul/git/catkin_ws/install/lib 
-Requires: moveit_core moveit_ros_planning_interface interactive_markers rosbag roscpp geometry_msgs ar_track_alvar visualization_msgs
+Requires: moveit_core moveit_ros_planning_interface interactive_markers rosbag roscpp geometry_msgs ar_track_alvar visualization_msgs message_runtime std_msgs geometry_msgs

@@ -315,6 +315,104 @@ octomap_msgs_generate_messages_py/fast:
 .PHONY : octomap_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/rule
+
+# Convenience name for target.
+sample_move_arm_gencpp: sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/rule
+.PHONY : sample_move_arm_gencpp
+
+# fast build rule for target.
+sample_move_arm_gencpp/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_gencpp.dir/build
+.PHONY : sample_move_arm_gencpp/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/rule
+
+# Convenience name for target.
+sample_move_arm_generate_messages: sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/rule
+.PHONY : sample_move_arm_generate_messages
+
+# fast build rule for target.
+sample_move_arm_generate_messages/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_generate_messages.dir/build
+.PHONY : sample_move_arm_generate_messages/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sample_move_arm_generate_messages_cpp: sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/rule
+.PHONY : sample_move_arm_generate_messages_cpp
+
+# fast build rule for target.
+sample_move_arm_generate_messages_cpp/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_cpp.dir/build
+.PHONY : sample_move_arm_generate_messages_cpp/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sample_move_arm_generate_messages_lisp: sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/rule
+.PHONY : sample_move_arm_generate_messages_lisp
+
+# fast build rule for target.
+sample_move_arm_generate_messages_lisp/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_lisp.dir/build
+.PHONY : sample_move_arm_generate_messages_lisp/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sample_move_arm_generate_messages_py: sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/rule
+.PHONY : sample_move_arm_generate_messages_py
+
+# fast build rule for target.
+sample_move_arm_generate_messages_py/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_generate_messages_py.dir/build
+.PHONY : sample_move_arm_generate_messages_py/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/rule
+
+# Convenience name for target.
+sample_move_arm_genlisp: sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/rule
+.PHONY : sample_move_arm_genlisp
+
+# fast build rule for target.
+sample_move_arm_genlisp/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_genlisp.dir/build
+.PHONY : sample_move_arm_genlisp/fast
+
+# Convenience name for target.
+sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/rule:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/rule
+.PHONY : sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/rule
+
+# Convenience name for target.
+sample_move_arm_genpy: sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/rule
+.PHONY : sample_move_arm_genpy
+
+# fast build rule for target.
+sample_move_arm_genpy/fast:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/build.make sample_move_arm/CMakeFiles/sample_move_arm_genpy.dir/build
+.PHONY : sample_move_arm_genpy/fast
+
+# Convenience name for target.
 sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
 .PHONY : sample_move_arm/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
@@ -446,6 +544,13 @@ help:
 	@echo "... octomap_msgs_generate_messages_lisp"
 	@echo "... octomap_msgs_generate_messages_py"
 	@echo "... rebuild_cache"
+	@echo "... sample_move_arm_gencpp"
+	@echo "... sample_move_arm_generate_messages"
+	@echo "... sample_move_arm_generate_messages_cpp"
+	@echo "... sample_move_arm_generate_messages_lisp"
+	@echo "... sample_move_arm_generate_messages_py"
+	@echo "... sample_move_arm_genlisp"
+	@echo "... sample_move_arm_genpy"
 	@echo "... shape_msgs_generate_messages_cpp"
 	@echo "... shape_msgs_generate_messages_lisp"
 	@echo "... shape_msgs_generate_messages_py"

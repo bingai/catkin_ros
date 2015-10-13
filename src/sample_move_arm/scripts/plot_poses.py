@@ -4,7 +4,7 @@ from visualization_msgs.msg import Marker
 from visualization_msgs.msg import MarkerArray
 import rospy
 import math
-from transformed_waypoints import Bagger
+from bagger import Bagger
 
 #Intended to be run separately. Looks like needs kinect connected as the frame is otherwise not available on rviz
 #can be checked using rostopic echo /visualization_marker_array

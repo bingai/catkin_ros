@@ -11,6 +11,8 @@ moveit/move_group_interface/move_group.h
 -
 moveit/planning_scene_interface/planning_scene_interface.h
 -
+boost/foreach.hpp
+-
 moveit_msgs/DisplayRobotState.h
 -
 moveit_msgs/DisplayTrajectory.h
@@ -20,6 +22,8 @@ moveit_msgs/AttachedCollisionObject.h
 moveit_msgs/CollisionObject.h
 -
 geometry_msgs/PoseArray.h
+-
+sample_move_arm/dmp.h
 -
 
 /opt/ros/hydro/include/XmlRpcDecl.h

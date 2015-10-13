@@ -20,12 +20,6 @@
   <node name="plot_poses" pkg="sample_move_arm" type="plot_poses.py" respawn="false" output="screen">
   </node>
 
-   <node name="plot_transformed" pkg="sample_move_arm" type="plot_transformed.py" respawn="false" output="screen">
-  </node>
-
-
-  <node name="transformed_waypoints" pkg="sample_move_arm" type="transformed_waypoints.py" respawn="false" output="screen">
-  </node>
 
 
 

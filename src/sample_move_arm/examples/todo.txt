@@ -1,0 +1,27 @@
+check if transform is occuring correctly
+
+d2x/dt2 = k*(g-x) - l*(dx/dt) - k*(g-m)*t+k*a*t+k*b
+
+tues:
+write fns for dmp learning, planning 
+add object rviz
+policy search think
+
+at eve: record demos
+
+wed: policy search
+read for thursday critique
+
+add header file
+
+
+Outline
+Input: a vector of <pose, time>  or 
+	<x, t>
+	<y, t>
+	<z, t>
+
+Steps
+1.Find phase variable s(t)
+s(t) = c* e^(-alpha*t/tau)
+Get c using known data points

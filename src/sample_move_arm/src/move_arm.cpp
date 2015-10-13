@@ -8,37 +8,22 @@
 #include <moveit_msgs/CollisionObject.h>
 #include <geometry_msgs/PoseArray.h>
 
+#include <sample_move_arm/PoseStampedArray.h>
+
 // geometry_msgs::PoseArray transformedWaypoints;
-std::vector<geometry_msgs::Pose> waypoints;
+std::vector<geometry_msgs::PoseStamped> waypoints;
 bool data_assigned = false;
 
-void receiveWaypoints(geometry_msgs::PoseArray ar)
+void receiveWaypointPoses(sample_move_arm::PoseStampedArray ar)
 {
   if(!data_assigned)
   { 
-    // transformedWaypoints = ar;
     data_assigned  =true;
-
-    // BOOST_FOREACH(geometry_msgs::Pose const m, ar)
-    // {
-    //   geometry_msgs::Pose::ConstPtr poseptr = m.instantiate<geometry_msgs::Pose>();
-      
-    //   waypoints.push_back(m);
-    // }
-      // if (markerptr->markers.size() != 0)
-      //         {
-      //             return markerptr->markers[0].pose.pose;
-      //         }
-    // }
     for(int i=0; i<ar.poses.size(); i++)
     {
       waypoints.push_back(ar.poses[i]);
     }
-
-
   }
-
-  // ROS_INFO("I heard: [%f]", ar.poses[0].position.x);
   // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
 }
 
@@ -80,13 +65,16 @@ int main(int argc, char **argv)
   ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
 
 
-  ros::Subscriber sub = node_handle.subscribe("transformed_waypoints", 1000, receiveWaypoints);
-
+  ros::Subscriber sub = node_handle.subscribe("pub_transformed", 1000, receiveWaypointPoses);
 
   while(!data_assigned)
   {
     sleep(1);
   }
+
+  // Dmp dm_obj = new Dmp();
+
+
   // Cartesian Paths
   // ^^^^^^^^^^^^^^^
   // You can plan a cartesian path directly by specifying a list of waypoints 
@@ -134,21 +122,20 @@ int main(int argc, char **argv)
   // translation.  We will specify the jump threshold as 0.0, effectively
   // disabling it.
   moveit_msgs::RobotTrajectory trajectory;
-  double fraction = group.computeCartesianPath(waypoints,
-                                               0.01,  // eef_step
-                                               0.0,   // jump_threshold
-                                               trajectory);
+  // double fraction = group.computeCartesianPath(waypoints,
+  //                                              0.01,  // eef_step
+  //                                              0.0,   // jump_threshold
+  //                                              trajectory);
 
-  ROS_INFO("Executing trajectory (cartesian path)");
+  // ROS_INFO("Executing trajectory (cartesian path)");
 
-  moveit::planning_interface::MoveGroup::Plan plan;
-  plan.trajectory_ = trajectory;
-  group.execute(plan);
+  // moveit::planning_interface::MoveGroup::Plan plan;
+  // plan.trajectory_ = trajectory;
+  // group.execute(plan);
   
 
 
   sleep(15.0);
-
 
   
 

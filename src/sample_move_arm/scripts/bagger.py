@@ -1,26 +1,10 @@
 #!/usr/bin/env python
 import rosbag
 from geometry_msgs.msg import PoseArray
+from geometry_msgs.msg import Pose
+import geometry_msgs
 import tf
 import rospy
-from bagger import Bagger
-# from std_msgs.msg import String
-
-def publish_transformed_waypoints():
-    pub = rospy.Publisher('transformed_waypoints', PoseArray, queue_size=10)
-    rospy.init_node('transformed_waypoints', anonymous=True)
-    rate = rospy.Rate(1) # 10hz
-    b = Bagger()
-    posarr = PoseArray()
-	posarr.header.frame_id = 'r_wrist_roll_link'
-	posarr.header.stamp = rospy.get_rostime()
-    posarr.poses = b.getTransformedWaypointsPoses()
-
-    while not rospy.is_shutdown():
-        pub.publish(posarr)
-        rate.sleep()
-		print "publishing transformed_waypoints"
-
 
 def rosPoseToVec(pose):
 	vec = [0]*7
@@ -49,31 +33,72 @@ class Bagger:
 		self.topic = topic
 		self.filename = filename
 		self.bag = rosbag.Bag(filename, 'r')
+		self.tfl = tf.TransformListener()
 
 	def getOrigin(self):
-		p = geometry_msgs.msg.Pose()
+		p = Pose()
 		for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
 			if len(msg.markers):
 				return msg.markers[0].pose.pose
 
-	#actually returns markers
-	def getWaypointMarkers(self):
+	#returns markers ar markers
+	def getMarkers(self):
 		waypoints = []
 		count = 0
 		for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
 			if len(msg.markers):
 				waypoints.append(msg.markers[0])
-				count+=1
+			count+=1
 		return waypoints
 
-	def getTransformedWaypointsPoses(self):
-		transformed_waypoints = self.getTransformedWaypoints()
+	# def getTransformedPoses(self):
+	# 	#converts pose stamped to pose
+	# 	transformed_waypoints = self.getTransformedPosesStamped()
+	# 	waypoints = []
+	# 	count =1
+	# 	for twp in transformed_waypoints:
+	# 		waypoints.append(twp.pose)
+	# 	return waypoints
+
+	def getTransformedPosesStamped(self):
+		#sends waypoints with time alogn with them. PoseStamped
+		origin_marker = self.getOrigin()
+		# print origin_marker
+		tformer = tf.TransformerROS(True, rospy.Duration(10.0))
+
+		#Make a transformation from torso to the current wrist pose
+		m = geometry_msgs.msg.TransformStamped()
+		m.header.frame_id = 'camera_depth_optical_frame'
+		m.child_frame_id = 'r_wrist_roll_link'
+		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
+		tformer.setTransform(m)
+
+		# n = geometry_msgs.msg.TransformStamped()
+		# n.header.frame_id = 'camera_depth_optical_frame'
+		# n.child_frame_id = 'r_wrist_roll_link'
+		# n.transform = vecToRosTransform(rosPoseToVec(origin_marker))
+		# tformer.setTransform(m)
+
+		recorded_waypoints = self.getMarkers()
+		
 		waypoints = []
-		for twp in transformed_waypoints:
-			waypoints.append(twp.pose)
+		
+		count = 0
+		for wp in recorded_waypoints:
+			wpstamped = wp.pose
+			wpstamped.header.frame_id = wp.header.frame_id
+			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
+			# twp = tformer.transformPose('odom_combined', twp)
+			twp.header.stamp.secs = wp.header.stamp.secs
+			twp.header.stamp.nsecs = wp.header.stamp.nsecs
+			# print twp.header.stamp
+			waypoints.append(twp)
+			count+=1
 		return waypoints
 
-	def getTransformedWaypoints(self):
+	#ar_track markers. for plotting
+	def getTransformedMarkers(self):
+		#for plotting
 		origin_marker = self.getOrigin()
 		# print origin_marker
 		tformer = tf.TransformerROS(True, rospy.Duration(10.0))
@@ -84,22 +109,18 @@ class Bagger:
 		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
 		tformer.setTransform(m)
 
-		recorded_waypoints = self.getWaypointMarkers()
+		recorded_waypoints = self.getMarkers()
 		
 		waypoints = []
 		
-		count = 0
+		# count = 0
 		for wp in recorded_waypoints:
 			wpstamped = wp.pose
 			wpstamped.header.frame_id = wp.header.frame_id
 			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
-			if not count%50:
-				waypoints.append(twp)
-			count+=1	
-		return waypoints
+			wp.pose = twp
+			wp.header.frame_id = wp.pose.header.frame_id
+			waypoints.append(wp)
+			# count+=1
 
-if __name__ == '__main__':
-    try:
-        publish_transformed_waypoints()
-    except rospy.ROSInterruptException:
-        pass
+		return waypoints
