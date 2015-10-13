@@ -9,21 +9,23 @@ from transformed_waypoints import Bagger
 #Intended to be run separately. Looks like needs kinect connected as the frame is otherwise not available on rviz
 #can be checked using rostopic echo /visualization_marker_array
 
-def plot_poses():
-	topic = 'visualization_marker_array'
+def plot_transformed():
+	topic = 'visualization_transformed_marker_array'
 	publisher = rospy.Publisher(topic, MarkerArray, queue_size=1000)
 
-	rospy.init_node('plot_poses',anonymous=True)
+	rospy.init_node('plot_transformed',anonymous=True)
 	r = rospy.Rate(1)
 
 	b = Bagger()
-	alvar_markers = b.getWaypointMarkers()
+	alvar_markers = b.getTransformedWaypointsMarkers()
 
 	markerArray = MarkerArray()
 
 	i = 0
 	l = len(alvar_markers)
 	for alvar_marker in alvar_markers:
+		# if not i:
+		# 	print alvar_marker
 		marker = Marker()
 		marker.header.frame_id = alvar_marker.header.frame_id
 		marker.header.stamp = rospy.get_rostime()
@@ -53,13 +55,11 @@ def plot_poses():
 
 	while not rospy.is_shutdown():
 		publisher.publish(markerArray)
-		print "publishing marker arry"
+		print "publishing transf marker arry"
 		r.sleep()
-
-
 if __name__ == '__main__':
 	try:
-		plot_poses()
+		plot_transformed()
 
 	except rospy.ROSInterruptException:
 		pass

@@ -96,7 +96,44 @@ class Bagger:
 			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
 			if not count%50:
 				waypoints.append(twp)
-			count+=1	
+			count+=1
+
+
+		# self.getTransformedWaypointsMarkers()
+
+		return waypoints
+
+	def getTransformedWaypointsMarkers(self):
+		origin_marker = self.getOrigin()
+		# print origin_marker
+		tformer = tf.TransformerROS(True, rospy.Duration(10.0))
+		#Make a transformation from torso to the current wrist pose
+		m = geometry_msgs.msg.TransformStamped()
+		m.header.frame_id = 'camera_depth_optical_frame'
+		m.child_frame_id = 'r_wrist_roll_link'
+		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
+		tformer.setTransform(m)
+
+		recorded_waypoints = self.getWaypointMarkers()
+		
+		waypoints = []
+		
+		count = 0
+		for wp in recorded_waypoints:
+			# if not count:
+			# 	print wp
+			# 	print '-------------------------------------'
+			wpstamped = wp.pose
+			wpstamped.header.frame_id = wp.header.frame_id
+			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
+			wp.pose = twp
+			wp.header.frame_id = wp.pose.header.frame_id
+			# if not count:
+			# 	print wp
+			# if not count%50:
+			waypoints.append(wp)
+			count+=1
+
 		return waypoints
 
 if __name__ == '__main__':
