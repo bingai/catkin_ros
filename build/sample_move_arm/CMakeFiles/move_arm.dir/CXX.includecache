@@ -19,6 +19,8 @@ moveit_msgs/AttachedCollisionObject.h
 -
 moveit_msgs/CollisionObject.h
 -
+geometry_msgs/PoseArray.h
+-
 
 /opt/ros/hydro/include/XmlRpcDecl.h
 ros/macros.h
@@ -132,6 +134,26 @@ ros/message_operations.h
 geometry_msgs/Point.h
 -
 geometry_msgs/Quaternion.h
+-
+
+/opt/ros/hydro/include/geometry_msgs/PoseArray.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Pose.h
 -
 
 /opt/ros/hydro/include/geometry_msgs/PoseStamped.h

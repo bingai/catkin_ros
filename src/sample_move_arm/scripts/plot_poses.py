@@ -4,7 +4,7 @@ from visualization_msgs.msg import Marker
 from visualization_msgs.msg import MarkerArray
 import rospy
 import math
-from bagger import Bagger
+from transformed_waypoints import Bagger
 
 #Intended to be run separately. Looks like needs kinect connected as the frame is otherwise not available on rviz
 #can be checked using rostopic echo /visualization_marker_array
@@ -53,8 +53,14 @@ def plot_poses():
 
 	while not rospy.is_shutdown():
 		publisher.publish(markerArray)
-		print "publishing marker arry"
+		# print "publishing marker arry"
 		r.sleep()
 
 
-plot_poses()
+if __name__ == '__main__':
+	try:
+		plot_poses()
+	except rospy.ROSInterruptException:
+		pass
+
+

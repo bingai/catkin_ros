@@ -1,11 +1,47 @@
 #include <moveit/move_group_interface/move_group.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
+#include <boost/foreach.hpp>
 
 #include <moveit_msgs/DisplayRobotState.h>
 #include <moveit_msgs/DisplayTrajectory.h>
-
 #include <moveit_msgs/AttachedCollisionObject.h>
 #include <moveit_msgs/CollisionObject.h>
+#include <geometry_msgs/PoseArray.h>
+
+// geometry_msgs::PoseArray transformedWaypoints;
+std::vector<geometry_msgs::Pose> waypoints;
+bool data_assigned = false;
+
+void receiveWaypoints(geometry_msgs::PoseArray ar)
+{
+  if(!data_assigned)
+  { 
+    // transformedWaypoints = ar;
+    data_assigned  =true;
+
+    // BOOST_FOREACH(geometry_msgs::Pose const m, ar)
+    // {
+    //   geometry_msgs::Pose::ConstPtr poseptr = m.instantiate<geometry_msgs::Pose>();
+      
+    //   waypoints.push_back(m);
+    // }
+      // if (markerptr->markers.size() != 0)
+      //         {
+      //             return markerptr->markers[0].pose.pose;
+      //         }
+    // }
+    for(int i=0; i<ar.poses.size(); i++)
+    {
+      waypoints.push_back(ar.poses[i]);
+    }
+
+
+  }
+
+  // ROS_INFO("I heard: [%f]", ar.poses[0].position.x);
+  // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
+}
+
 
 int main(int argc, char **argv)
 {
@@ -13,16 +49,9 @@ int main(int argc, char **argv)
   ros::NodeHandle node_handle;  
   ros::AsyncSpinner spinner(1);
   spinner.start();
-
-
   /* This sleep is ONLY to allow Rviz to come up */
   //sleep(20.0);
-  
-  // BEGIN_TUTORIAL
-  // 
-  // Setup
-  // ^^^^^
-  // 
+
   // The :move_group_interface:`MoveGroup` class can be easily 
   // setup using just the name
   // of the group you would like to control and plan for.
@@ -43,42 +72,53 @@ int main(int argc, char **argv)
   ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
   
   // We can also print the name of the end-effector link for this group.
-  ROS_INFO("Reference frame: %s", group.getEndEffectorLink().c_str());
+  ROS_INFO("End Effector link: %s", group.getEndEffectorLink().c_str());
 
   group.setPoseReferenceFrame("r_wrist_roll_link");
+
+  std::cout<<"Should this be planning frame or pose reference frame"<<std::endl;
+  ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
+
+
+  ros::Subscriber sub = node_handle.subscribe("transformed_waypoints", 1000, receiveWaypoints);
+
+
+  while(!data_assigned)
+  {
+    sleep(1);
+  }
   // Cartesian Paths
   // ^^^^^^^^^^^^^^^
   // You can plan a cartesian path directly by specifying a list of waypoints 
   // for the end-effector to go through. Note that we are starting 
   // from the new start state above.  The initial pose (start state) does not
   // need to be added to the waypoint list.
-  std::vector<geometry_msgs::Pose> waypoints;
 
-robot_state::RobotState start_state(*group.getCurrentState());
-// start_state.printStateInfo(std::cout);
-geometry_msgs::Pose start_pose2;
-start_pose2.orientation.w = 1.0;
-start_pose2.position.x = 0;
-start_pose2.position.y = 0;
-start_pose2.position.z = 0.55;
-const robot_state::JointModelGroup *joint_model_group =
-                start_state.getJointModelGroup(group.getName());
-start_state.setFromIK(joint_model_group, start_pose2);
-group.setStartState(start_state);
+// robot_state::RobotState start_state(*group.getCurrentState());
+// // // start_state.printStateInfo(std::cout);
+// // geometry_msgs::Pose start_pose2;
+// // start_pose2.orientation.w = 1.0;
+// // start_pose2.position.x = 0;
+// // start_pose2.position.y = 0;
+// // start_pose2.position.z = 0.55;
+// const robot_state::JointModelGroup *joint_model_group =
+//                 start_state.getJointModelGroup(group.getName());
+// start_state.setFromIK(joint_model_group, start_pose2);
+// group.setStartState(start_state);
 
-  geometry_msgs::Pose target_pose3 = start_pose2;
-  target_pose3.position.x += 0.2;
-  // target_pose3.position.z -= 0.2;
-  waypoints.push_back(target_pose3);  // up and out
+//   geometry_msgs::Pose target_pose3 = start_pose2;
+//   target_pose3.position.x += 0.2;
+//   // target_pose3.position.z -= 0.2;
+//   waypoints.push_back(target_pose3);  // up and out
 
-  target_pose3.position.x += 0.1;
-  waypoints.push_back(target_pose3);  // left
+//   target_pose3.position.x += 0.1;
+//   waypoints.push_back(target_pose3);  // left
 
-  // target_pose3.position.x += 0.1;
-  // waypoints.push_back(target_pose3);  // left
+//   // target_pose3.position.x += 0.1;
+//   // waypoints.push_back(target_pose3);  // left
 
-    target_pose3.position.y += 0.1;
-  waypoints.push_back(target_pose3);  // left
+//     target_pose3.position.y += 0.1;
+//   waypoints.push_back(target_pose3);  // left
 
   //   target_pose3.position.y += 0.1;
   //   waypoints.push_back(target_pose3);  // left

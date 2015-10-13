@@ -13,6 +13,7 @@ sample_move_arm/CMakeFiles/move_arm.dir/src/move_arm.cpp.o
  /opt/ros/hydro/include/geometry_msgs/Point.h
  /opt/ros/hydro/include/geometry_msgs/PointStamped.h
  /opt/ros/hydro/include/geometry_msgs/Pose.h
+ /opt/ros/hydro/include/geometry_msgs/PoseArray.h
  /opt/ros/hydro/include/geometry_msgs/PoseStamped.h
  /opt/ros/hydro/include/geometry_msgs/Quaternion.h
  /opt/ros/hydro/include/geometry_msgs/QuaternionStamped.h

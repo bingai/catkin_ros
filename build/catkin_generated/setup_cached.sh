@@ -8,5 +8,3 @@
 
 # modified environment variables
 export PWD="/home/rahul/git/catkin_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/rahul/git/catkin_ws/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/rahul/git/catkin_ws/src:/opt/ros/hydro/share:/opt/ros/hydro/stacks"
