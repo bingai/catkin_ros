@@ -55,16 +55,16 @@ find_package(Eigen REQUIRED)
 ###########
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${EIGEN_INCLUDE_DIRS})
-include_directories(${catkin_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
 
 
 
-add_executable(move_arm src/move_arm.cpp)
+add_executable(move_arm src/move_arm.cpp src/dmp.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS move_arm DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/plot_transformed.py scripts/pub_transformed.py 
+catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/bagger.py scripts/plot_transformed.py scripts/pub_transformed.py 
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

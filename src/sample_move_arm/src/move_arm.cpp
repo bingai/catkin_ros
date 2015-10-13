@@ -9,20 +9,29 @@
 #include <geometry_msgs/PoseArray.h>
 
 #include <sample_move_arm/PoseStampedArray.h>
+#include <sample_move_arm/dmp.h>
 
 // geometry_msgs::PoseArray transformedWaypoints;
-std::vector<geometry_msgs::PoseStamped> waypoints;
+// std::vector<geometry_msgs::PoseStamped> waypoints;
 bool data_assigned = false;
+Dmp dmp;
 
-void receiveWaypointPoses(sample_move_arm::PoseStampedArray ar)
+void receivePSArray(sample_move_arm::PoseStampedArray ar)
 {
-  if(!data_assigned)
+
+
+  if(!dmp.get_data_assigned())
   { 
-    data_assigned  =true;
+    vector<geometry_msgs::Pose> wp;
+    vector<geometry_msgs::PoseStamped> wps;
+
     for(int i=0; i<ar.poses.size(); i++)
     {
-      waypoints.push_back(ar.poses[i]);
+      wps.push_back(ar.poses[i]);
+      wp.push_back(ar.poses[i].pose);
     }
+    dmp.set_data_assigned(true);
+    dmp.set_waypoints(wp, wps);
   }
   // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
 }
@@ -64,15 +73,13 @@ int main(int argc, char **argv)
   std::cout<<"Should this be planning frame or pose reference frame"<<std::endl;
   ROS_INFO("Reference frame: %s", group.getPlanningFrame().c_str());
 
+  ros::Subscriber sub = node_handle.subscribe("pub_transformed", 1000, receivePSArray);
 
-  ros::Subscriber sub = node_handle.subscribe("pub_transformed", 1000, receiveWaypointPoses);
-
-  while(!data_assigned)
+  while(!dmp.get_data_assigned())
   {
     sleep(1);
   }
 
-  // Dmp dm_obj = new Dmp();
 
 
   // Cartesian Paths

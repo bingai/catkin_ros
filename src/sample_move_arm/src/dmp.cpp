@@ -9,31 +9,31 @@
 #include <visualization_msgs/Marker.h>
 #include <iostream>
 #include <vector>
+#include <sample_move_arm/dmp.h>
+#include <sample_move_arm/PoseStampedArray.h>
 using namespace std;
 
-Dmp()
+Dmp::Dmp()
 {
+	// waypoints_ = wp;
+}
 
+bool Dmp::get_data_assigned()
+{
+	return data_assigned_;
+}
+
+void Dmp::set_data_assigned(bool v){
+	data_assigned_ = v;
+}
+
+void Dmp::set_waypoints(std::vector<geometry_msgs::Pose> wp, std::vector<geometry_msgs::PoseStamped> wps){
+	waypoints_ = wp;
+	waypoints_stamped_ = wps;
+	cout<<"Set"<<endl;
 }
 
 
-bool ReceiveMarkerArray(geometry_msgs::PoseArray)
-{
-	data_assigned  =true;
-    for(int i=0; i<ar.poses.size(); i++)
-    {
-      waypoints.push_back(ar.poses[i]);
-    }
-
-  }
-  // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
-}
-
-void LoadPosestamped()
-{
-
-}
-
-void ComputePhaseFunction()
-float interpolated_y(float x1, float x2, float y1, float y2)
+// void ComputePhaseFunction()
+// float interpolated_y(float x1, float x2, float y1, float y2)
 

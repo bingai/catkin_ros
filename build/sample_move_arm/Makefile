@@ -496,6 +496,30 @@ trajectory_msgs_generate_messages_py/fast:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make sample_move_arm/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
 .PHONY : trajectory_msgs_generate_messages_py/fast
 
+src/dmp.o: src/dmp.cpp.o
+.PHONY : src/dmp.o
+
+# target to build an object file
+src/dmp.cpp.o:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o
+.PHONY : src/dmp.cpp.o
+
+src/dmp.i: src/dmp.cpp.i
+.PHONY : src/dmp.i
+
+# target to preprocess a source file
+src/dmp.cpp.i:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.i
+.PHONY : src/dmp.cpp.i
+
+src/dmp.s: src/dmp.cpp.s
+.PHONY : src/dmp.s
+
+# target to generate assembly for a file
+src/dmp.cpp.s:
+	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.s
+.PHONY : src/dmp.cpp.s
+
 src/move_arm.o: src/move_arm.cpp.o
 .PHONY : src/move_arm.o
 
@@ -558,6 +582,9 @@ help:
 	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... trajectory_msgs_generate_messages_py"
+	@echo "... src/dmp.o"
+	@echo "... src/dmp.i"
+	@echo "... src/dmp.s"
 	@echo "... src/move_arm.o"
 	@echo "... src/move_arm.i"
 	@echo "... src/move_arm.s"

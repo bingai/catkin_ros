@@ -12,6 +12,7 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 SET(CMAKE_C_INCLUDE_PATH
   "/home/rahul/git/catkin_ws/devel/include"
   "/usr/include/eigen3"
+  "/home/rahul/git/catkin_ws/src/sample_move_arm/include"
   "/home/rahul/git/catkin_ws/src/ar_track_alvar/include"
   "/opt/ros/hydro/include"
   "/opt/ros/hydro/include/opencv"

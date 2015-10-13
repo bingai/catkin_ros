@@ -17,7 +17,7 @@ def plot_poses():
 	r = rospy.Rate(1)
 
 	b = Bagger()
-	alvar_markers = b.getWaypointMarkers()
+	alvar_markers = b.getMarkers()
 
 	markerArray = MarkerArray()
 
