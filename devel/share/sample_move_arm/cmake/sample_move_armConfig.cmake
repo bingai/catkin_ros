@@ -153,7 +153,7 @@ foreach(t ${sample_move_arm_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "rosbag;roscpp;moveit_core;moveit_ros_planning_interface;interactive_markers")
+set(depends "moveit_core;moveit_ros_planning_interface;interactive_markers;rosbag;roscpp;geometry_msgs;ar_track_alvar;visualization_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

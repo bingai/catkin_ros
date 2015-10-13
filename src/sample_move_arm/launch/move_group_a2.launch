@@ -1,0 +1,9 @@
+<launch>
+
+  <include file="$(find pr2_moveit_config)/launch/demo.launch"/>
+
+  <node name="move_group_a2" pkg="move_pr2withkinect" type="move_group_a2.py" respawn="false" output="screen">
+  </node>
+
+
+</launch>

@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 from __future__ import division
-
 from visualization_msgs.msg import Marker
 from visualization_msgs.msg import MarkerArray
 import rospy
 import math
 from bagger import Bagger
+
+#Intended to be run separately. Looks like needs kinect connected as the frame is otherwise not available on rviz
+#can be checked using rostopic echo /visualization_marker_array
 
 def plot_poses():
 	topic = 'visualization_marker_array'
@@ -15,8 +17,8 @@ def plot_poses():
 	r = rospy.Rate(1)
 
 	b = Bagger()
-	alvar_markers = b.getWaypoints()
-	# print alvar_markers
+	alvar_markers = b.getWaypointMarkers()
+
 	markerArray = MarkerArray()
 
 	i = 0
@@ -50,9 +52,9 @@ def plot_poses():
 		i+=1
 
 	while not rospy.is_shutdown():
-	   # Publish the MarkerArray
 		publisher.publish(markerArray)
-
+		print "publishing marker arry"
 		r.sleep()
+
 
 plot_poses()

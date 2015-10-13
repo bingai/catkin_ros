@@ -1,19 +1,26 @@
 #!/usr/bin/env python
 import rosbag
-import geometry_msgs.msg
+from geometry_msgs.msg import PoseArray
 import tf
 import rospy
+from bagger import Bagger
 # from std_msgs.msg import String
 
-def talker():
-    pub = rospy.Publisher('bagger', tuple, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
+def publish_transformed_waypoints():
+    pub = rospy.Publisher('transformed_waypoints', PoseArray, queue_size=10)
+    rospy.init_node('transformed_waypoints', anonymous=True)
+    rate = rospy.Rate(1) # 10hz
+    b = Bagger()
+    posarr = PoseArray()
+	posarr.header.frame_id = 'r_wrist_roll_link'
+	posarr.header.stamp = rospy.get_rostime()
+    posarr.poses = b.getTransformedWaypointsPoses()
+
     while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
+        pub.publish(posarr)
         rate.sleep()
+		print "publishing transformed_waypoints"
+
 
 def rosPoseToVec(pose):
 	vec = [0]*7
@@ -37,54 +44,33 @@ def vecToRosTransform(vec):
 	trans.rotation.w = vec[6]
 	return trans
 
-
 class Bagger:
-	def __init__(self, topic='ar_pose_marker', filename='/home/rahul/git/ros_pr2/src/move_pr2withkinect/bag/square2.bag'):
+	def __init__(self, topic='ar_pose_marker', filename='/home/rahul/git/catkin_ws/src/sample_move_arm/bag/square.bag'):
 		self.topic = topic
 		self.filename = filename
 		self.bag = rosbag.Bag(filename, 'r')
 
 	def getOrigin(self):
-		p = geometry_msgs.msg.Pose()comm
+		p = geometry_msgs.msg.Pose()
 		for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
 			if len(msg.markers):
 				return msg.markers[0].pose.pose
 
 	#actually returns markers
-	def getWaypoints(self):
+	def getWaypointMarkers(self):
 		waypoints = []
 		count = 0
 		for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
 			if len(msg.markers):
 				waypoints.append(msg.markers[0])
 				count+=1
-
 		return waypoints
 
-	
 	def getTransformedWaypointsPoses(self):
-		origin_marker = self.getOrigin()
-		# print origin_marker
-		tformer = tf.TransformerROS(True, rospy.Duration(10.0))
-		#Make a transformation from torso to the current wrist pose
-		m = geometry_msgs.msg.TransformStamped()
-		m.header.frame_id = 'camera_depth_optical_frame'
-		m.child_frame_id = 'end_effector'
-		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
-		tformer.setTransform(m)
-
-		recorded_waypoints = self.getWaypoints()
-		
+		transformed_waypoints = self.getTransformedWaypoints()
 		waypoints = []
-		
-		count = 0
-		for wp in recorded_waypoints:
-			wpstamped = wp.pose
-			wpstamped.header.frame_id = wp.header.frame_id
-			twp = tformer.transformPose('end_effector', wpstamped)
-			if not count%50:
-				waypoints.append(twp.pose)
-			count+=1	
+		for twp in transformed_waypoints:
+			waypoints.append(twp.pose)
 		return waypoints
 
 	def getTransformedWaypoints(self):
@@ -94,11 +80,11 @@ class Bagger:
 		#Make a transformation from torso to the current wrist pose
 		m = geometry_msgs.msg.TransformStamped()
 		m.header.frame_id = 'camera_depth_optical_frame'
-		m.child_frame_id = 'end_effector'
+		m.child_frame_id = 'r_wrist_roll_link'
 		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
 		tformer.setTransform(m)
 
-		recorded_waypoints = self.getWaypoints()
+		recorded_waypoints = self.getWaypointMarkers()
 		
 		waypoints = []
 		
@@ -106,7 +92,7 @@ class Bagger:
 		for wp in recorded_waypoints:
 			wpstamped = wp.pose
 			wpstamped.header.frame_id = wp.header.frame_id
-			twp = tformer.transformPose('end_effector', wpstamped)
+			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
 			if not count%50:
 				waypoints.append(twp)
 			count+=1	
@@ -114,6 +100,6 @@ class Bagger:
 
 if __name__ == '__main__':
     try:
-        talker()
+        publish_transformed_waypoints()
     except rospy.ROSInterruptException:
         pass

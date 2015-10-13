@@ -11,17 +11,26 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning 
   moveit_ros_planning_interface 
   rosbag
+
+  pluginlib
+  cmake_modules
+  geometry_msgs
+  ar_track_alvar
+  visualization_msgs
 )
 
 find_package(Boost REQUIRED system filesystem date_time thread)
 
 catkin_package(
   CATKIN_DEPENDS 
-    rosbag
-    roscpp
     moveit_core
     moveit_ros_planning_interface
     interactive_markers
+    rosbag
+    roscpp
+    geometry_msgs
+    ar_track_alvar
+    visualization_msgs
 )
 find_package(Eigen REQUIRED)
 
@@ -38,4 +47,5 @@ link_directories(${catkin_LIBRARY_DIRS})
 add_executable(move_arm src/move_arm.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS move_arm DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
 
