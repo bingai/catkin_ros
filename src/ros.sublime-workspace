@@ -4,24 +4,112 @@
 		"selected_items":
 		[
 			[
-				"alvar",
-				"alvar_marker"
+				"num",
+				"num_iter_integr_"
 			],
 			[
-				"get",
-				"getTransformedWaypoints"
+				"tim",
+				"time_res"
 			],
 			[
-				"tra",
-				"transformedWaypoints"
+				"Com",
+				"ComputePhase"
 			],
 			[
-				"Pose",
-				"PoseArray"
+				"x_",
+				"x_demo_"
+			],
+			[
+				"a_",
+				"a_demo_"
+			],
+			[
+				"v",
+				"v_demo_"
+			],
+			[
+				"a",
+				"a_start_"
+			],
+			[
+				"x",
+				"x_demo_"
+			],
+			[
+				"demo",
+				"demonstration_"
+			],
+			[
+				"de",
+				"demonstration"
+			],
+			[
+				"pu",
+				"push_back"
 			],
 			[
 				"y",
 				"y"
+			],
+			[
+				"sta",
+				"start_time"
+			],
+			[
+				"way",
+				"waypointstamped"
+			],
+			[
+				"data",
+				"data_assigned_"
+			],
+			[
+				"dimen",
+				"dimension_"
+			],
+			[
+				"dime",
+				"dimension"
+			],
+			[
+				"wayp",
+				"waypoints_stamped_"
+			],
+			[
+				"end_",
+				"end_time_"
+			],
+			[
+				"end",
+				"end_phase_"
+			],
+			[
+				"wps",
+				"wps"
+			],
+			[
+				"Pose",
+				"Pose"
+			],
+			[
+				"Co",
+				"ComputePhaseFunction"
+			],
+			[
+				"getTra",
+				"getTransformedWaypointsPoses"
+			],
+			[
+				"get",
+				"getWaypointMarkers"
+			],
+			[
+				"alvar",
+				"alvar_marker"
+			],
+			[
+				"tra",
+				"transformedWaypoints"
 			],
 			[
 				"new",
@@ -38,10 +126,6 @@
 			[
 				"V",
 				"VOTE-REQ"
-			],
-			[
-				"end",
-				"endl"
 			],
 			[
 				"all",
@@ -196,10 +280,6 @@
 				"received_tid"
 			],
 			[
-				"sta",
-				"state_req_in_progress"
-			],
-			[
 				"Remo",
 				"RemoveThreadFromSet"
 			],
@@ -210,10 +290,6 @@
 			[
 				"Con",
 				"ConnectToProcessAlive"
-			],
-			[
-				"num",
-				"num_bytes"
 			],
 			[
 				"proce",
@@ -438,30 +514,6 @@
 			[
 				"work",
 				"workerThread"
-			],
-			[
-				"alv",
-				"alvar_markers"
-			],
-			[
-				"pose",
-				"posestamped"
-			],
-			[
-				"ros",
-				"rosPoseToVec"
-			],
-			[
-				"one",
-				"onetransformed"
-			],
-			[
-				"targ",
-				"target_pose3"
-			],
-			[
-				"tar",
-				"target_pose3"
 			]
 		]
 	},
@@ -471,14 +523,15 @@
 			"file": "sample_move_arm/examples/todo.txt",
 			"settings":
 			{
-				"buffer_size": 244,
+				"buffer_size": 422,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "sample_move_arm/src/dmp.cpp",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2300,
 				"line_ending": "Unix"
 			}
 		},
@@ -486,7 +539,23 @@
 			"file": "sample_move_arm/src/move_arm.cpp",
 			"settings":
 			{
-				"buffer_size": 4775,
+				"buffer_size": 8033,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sample_move_arm/include/sample_move_arm/dmp.h",
+			"settings":
+			{
+				"buffer_size": 1307,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rahul/git/dmp/src/dmp.cpp",
+			"settings":
+			{
+				"buffer_size": 9804,
 				"line_ending": "Unix"
 			}
 		}
@@ -494,9 +563,29 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 159.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"pakc",
+				"Package Control: Install Package"
+			],
+			[
+				"wor",
+				"Word Wrap: Toggle"
+			],
+			[
+				"si",
+				"View: Toggle Side Bar"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"book",
+				"Bookmarks: Select All"
+			],
 			[
 				"side",
 				"View: Toggle Side Bar"
@@ -511,10 +600,6 @@
 			],
 			[
 				"word",
-				"Word Wrap: Toggle"
-			],
-			[
-				"wor",
 				"Word Wrap: Toggle"
 			],
 			[
@@ -566,11 +651,11 @@
 				"Word Wrap: Toggle"
 			]
 		],
-		"width": 392.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 146.0
 	},
 	"distraction_free":
 	{
@@ -583,21 +668,34 @@
 	},
 	"file_history":
 	[
+		"/home/rahul/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/include/sample_move_arm/dmp.h",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/CMakeLists.txt",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/msg/Point.msg",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/msg/Path.msg",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/include/sample_move_arm/point.h",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/launch/dmp.launch",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/plot_poses.py",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/src/move_arm.cpp",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/src/dmp.h",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/src/dmp.cpp",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/examples/todo.txt",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/pub_transformed.py",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/pub_times.py",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/bagger.py",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/plot_transformed.py",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/msg/PoseStampedArray.msg",
+		"/home/rahul/git/catkin_ws/src/sample_move_arm/package.xml",
+		"/home/rahul/git/catkin_ws/build/sample_move_arm/catkin_generated/installspace/bagger.py",
 		"/home/rahul/.bashrc",
 		"/home/rahul/git/ros_pr2/ros_pr2.sublime-project",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/transformed_waypoints.py",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/plot_poses.py",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/plot_transformed.py",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/launch/dmp.launch",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/examples/launch file to visualize.xml",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/src/move_arm.cpp",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/examples/subscribing.cpp",
 		"/home/rahul/recordedData.cpp",
 		"/opt/ros/hydro/include/geometry_msgs/PoseArray.h",
 		"/home/rahul/main.cpp",
 		"/home/rahul/git/move_group_a2.py",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/CMakeLists.txt",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/bagger.py",
 		"/home/rahul/git/3-phase-commit/log/log2",
 		"/home/rahul/git/3-phase-commit/log/log1",
 		"/home/rahul/git/3-phase-commit/controller.cpp",
@@ -612,7 +710,6 @@
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/scripts/move_group_a2.py",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/src/recordedData.cpp",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/launch/CMakeLists.txt",
-		"/home/rahul/git/catkin_ws/src/sample_move_arm/package.xml",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/launch/package.xml",
 		"/home/rahul/git/ros_pr2/src/move_pr2withkinect/src/tf_frame.cpp",
 		"/home/rahul/git/ros_pr2/src/move_pr2withkinect/scripts/plot_poses.py",
@@ -648,7 +745,6 @@
 		"/home/rahul/git/3-phase-commit/log/up/0from4",
 		"/home/rahul/git/3-phase-commit/log/up/3from2",
 		"/home/rahul/git/3-phase-commit/log/computeup2",
-		"/home/rahul/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
 		"/home/rahul/git/3-phase-commit/log/sdr/2from0",
 		"/home/rahul/git/3-phase-commit/test.txt",
 		"/home/rahul/git/3-phase-commit/log/up/2from0",
@@ -699,18 +795,7 @@
 		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/readme.txt",
 		"/home/rahul/git/3-phase-commit/log/recalivelog1from2",
 		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/log_merger.py",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/delay_bc.txt",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/merged_b.log",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/uc.txt",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/delay_uc.txt",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/merged_u.log",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/bc.txt",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/mergedu.log",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/run.sh",
-		"/home/rahul/git/3-phase-commit/log/alivelog1",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/logs/log_0",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/logs/log_1",
-		"/home/rahul/git/3-phase-commit/log/up2"
+		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/delay_bc.txt"
 	],
 	"find":
 	{
@@ -732,6 +817,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"a_demo",
+			"Dmp::",
+			"Calculate",
+			"CalculatePhase",
+			"demonstration",
+			"p.c",
+			"p",
+			"positions",
+			"posesta",
+			",",
+			"plot_transformed",
+			"ar.poses[0]",
+			"m",
+			"frame_id",
+			"getTransformedWaypointsPoses",
+			"'------------------------------'",
 			"poses",
 			"size",
 			"marker",
@@ -843,23 +944,7 @@
 			"HEAD",
 			"decision_reached_",
 			"HEAD",
-			"LogCommitOrAbort",
-			"Decided.",
-			"split(",
-			"receiveupreq",
-			"type_req",
-			"WaitForUpResponse",
-			"upresponse",
-			"HEAD",
-			"head",
-			"ReceiveDecision",
-			"ReceiveUp",
-			"timeout",
-			"ReceiveUp",
-			"pthread_join",
-			"DecisionRequest",
-			"this",
-			"createthread"
+			"LogCommitOrAbort"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -878,7 +963,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -886,15 +971,15 @@
 					"file": "sample_move_arm/examples/todo.txt",
 					"settings":
 					{
-						"buffer_size": 244,
+						"buffer_size": 422,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								196,
-								196
+								331,
+								331
 							]
 						],
 						"settings":
@@ -909,25 +994,27 @@
 				},
 				{
 					"buffer": 1,
+					"file": "sample_move_arm/src/dmp.cpp",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 2300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2276,
+								2276
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1466.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -937,15 +1024,15 @@
 					"file": "sample_move_arm/src/move_arm.cpp",
 					"settings":
 					{
-						"buffer_size": 4775,
+						"buffer_size": 8033,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2300,
-								2300
+								2918,
+								2918
 							]
 						],
 						"settings":
@@ -955,7 +1042,61 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 312.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sample_move_arm/include/sample_move_arm/dmp.h",
+					"settings":
+					{
+						"buffer_size": 1307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1114,
+								1114
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/rahul/git/dmp/src/dmp.cpp",
+					"settings":
+					{
+						"buffer_size": 9804,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7132,
+								7132
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2932.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1008,6 +1149,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"trans",
+				"src/sample_move_arm/scripts/transformed_waypoints.py"
+			],
+			[
+				"bagg",
+				"build/sample_move_arm/catkin_generated/installspace/bagger.py"
+			],
 			[
 				"send",
 				"send.cpp"
@@ -1318,7 +1467,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 256.0,
+	"side_bar_visible": false,
+	"side_bar_width": 222.0,
 	"status_bar_visible": true
 }

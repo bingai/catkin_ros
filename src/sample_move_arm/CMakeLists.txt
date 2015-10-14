@@ -31,7 +31,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED system filesystem date_time thread)
 
 
-set(MSG_FILES PoseStampedArray.msg)
+set(MSG_FILES PoseStampedArray.msg Point.msg Trajectory.msg)
 add_message_files(DIRECTORY msg FILES ${MSG_FILES})
 generate_messages(DEPENDENCIES ${MSG_DEPS})
 
@@ -57,8 +57,6 @@ find_package(Eigen REQUIRED)
 include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${EIGEN_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
-
-
 
 add_executable(move_arm src/move_arm.cpp src/dmp.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})

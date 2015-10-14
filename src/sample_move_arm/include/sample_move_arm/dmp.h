@@ -12,25 +12,40 @@
 #include <std_msgs/Time.h>
 using namespace std;
 
+struct Point{
+  vector<double> coordinates;
+  vector<double> velocities;
+};
+
+struct Trajectory{
+  vector< Point > points;
+  vector< double > times;
+};
 
 class Dmp{
 public:
-	Dmp();
-	// void ReceivePSArray(sample_move_arm::PoseStampedArray);
-	
-	bool get_data_assigned();
-	void set_waypoints(std::vector<geometry_msgs::Pose>, std::vector<geometry_msgs::PoseStamped>);
-	void set_start_time(geometry_msgs::PoseStamped);
-	void set_data_assigned(bool);
-	
-	void ComputePhaseFunction(geometry_msgs::PoseStamped);
+	Dmp(double K, double D);
+	void Learning(const Trajectory &demo, double K, double D, int dimension);
+	void Planning(Point &start_state, Point &goal_state, double tau, double dt, Trajectory &plan);
 private:
-	float tau_;
-	float alpha_;
-	float c_phase_;
-	std_msgs::Time start_time_;
-	std_msgs::Time end_time_;
-	vector<geometry_msgs::PoseStamped> waypoints_stamped_;
-	vector<geometry_msgs::Pose> waypoints_;
-	bool data_assigned_;
+	void ComputePhase(double);
+	void ComputeVelAcc();;
+	void ComputeF();
+	void InitializeVars();
+	int dimension_;
+	Trajectory demonstration_;
+	double K_;
+	double D_;
+	double tau_;
+	double alpha_;
+	int num_points_;
+	int num_iter_integr_;
+	double x_start_;
+	double x_goal_; 
+	vector<double> times_;
+	vector<double> x_demo_;
+	vector<double> v_demo_;
+	vector<double> a_demo_;
+	vector<double> f_phase_;
+	vector<double> f_target_;
 };
