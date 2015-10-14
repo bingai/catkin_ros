@@ -7,39 +7,34 @@
 #include <moveit_msgs/AttachedCollisionObject.h>
 #include <moveit_msgs/CollisionObject.h>
 #include <geometry_msgs/PoseArray.h>
-
 #include <sample_move_arm/PoseStampedArray.h>
 #include <sample_move_arm/dmp.h>
+#include <cmath>
 
-std::vector<geometry_msgs::PoseStamped> waypointstamped;
+using namespace std;
+
+std::vector<geometry_msgs::PoseStamped> demoPoseStamped;
 bool data_assigned = false;
-
 
 void receivePSArray(sample_move_arm::PoseStampedArray ar)
 {
   if(!data_assigned)
   { 
-    // vector<geometry_msgs::Pose> wp;
-    vector<geometry_msgs::PoseStamped> wps;
-
     for(int i=0; i<ar.poses.size(); i++)
-    {
-      wps.push_back(ar.poses[i]);
-      // wp.push_back(ar.poses[i].pose);
-    }
+      demoPoseStamped.push_back(ar.poses[i]);
+
     data_assigned = true;
-    // dmp.set_waypoints(wp, wps);
   }
   // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
 }
 
-void ConvertData(Trajectory &demo)
+void ConvertDataToTrajectory(Trajectory &demo)
 {
-    double start_time = waypointstamped.front().header.time;
-    for(std::vector<geometry_msgs::PoseStamped>::iterator it = waypointstamped.begin(); it!=waypointstamped.end(); it++)
+    double start_time = demoPoseStamped.front().header.stamp.toSec();
+    for(std::vector<geometry_msgs::PoseStamped>::iterator it = demoPoseStamped.begin(); it!=demoPoseStamped.end(); it++)
     {
       Point pt;
-      geometry_msgs::Pose p = *it.pose;
+      geometry_msgs::Pose p = (*it).pose;
       pt.coordinates.push_back(p.position.x);
       pt.coordinates.push_back(p.position.y);
       pt.coordinates.push_back(p.position.z);
@@ -47,10 +42,26 @@ void ConvertData(Trajectory &demo)
       pt.coordinates.push_back(p.orientation.y);
       pt.coordinates.push_back(p.orientation.z);
       pt.coordinates.push_back(p.orientation.w);
-      demo->points.push_back(pt);
-      demo->times.push_back(((*it).header.time - start_time));
+      demo.points.push_back(pt);
+      demo.times.push_back(((*it).header.stamp.toSec() - start_time));
     }
+
 }
+void ConvertTrajectoryToVecPoses(Trajectory &traj, vector<geometry_msgs::Pose> &poses)
+{
+  for(int i=0; i<traj.points.size();i++)
+  {
+    geometry_msgs::Pose p;
+    p.position.x = traj.points[i].coordinates[0];
+    p.position.y = traj.points[i].coordinates[1];
+    p.position.z = traj.points[i].coordinates[2];
+    p.orientation.x = traj.points[i].coordinates[3];
+    p.orientation.y = traj.points[i].coordinates[4];
+    p.orientation.z = traj.points[i].coordinates[5];
+    p.orientation.w = traj.points[i].coordinates[6];
+    poses.push_back(p);
+  }
+} 
 
 int main(int argc, char **argv)
 {
@@ -74,14 +85,22 @@ int main(int argc, char **argv)
     sleep(1);
   }
 
+
   Trajectory demonstration;
-  ConvertData(demonstration);
-  vector<Dmp* > all_dmps;
-  for(int i=0; i<demonstration.points.front().size(); i++)
-  {
-    Dmp* d = new Dmp(demonstration, K[i], D[i], i);
-    d->
-  }
+  ConvertDataToTrajectory(demonstration);
+  DmpGroup d;
+  
+  // vector<double> K, D;
+  // for(int i =0; i<demonstration.points.front().coordinates.size(); i++)
+  //   {
+  //     K.push_back(0.5);
+  //     D.push_back(sqrt(K[i])*2);
+  //   }
+
+  double K=0.5;
+  double D = sqrt(K)*2;
+  d.Learning(demonstration, K, D);
+  // d.Planning()
 
 // robot_state::RobotState start_state(*group.getCurrentState());
 // // // start_state.printStateInfo(std::cout);
@@ -94,17 +113,19 @@ int main(int argc, char **argv)
 //                 start_state.getJointModelGroup(group.getName());
 // start_state.setFromIK(joint_model_group, start_pose2);
 // group.setStartState(start_state);
-  moveit_msgs::RobotTrajectory trajectory;
-  double fraction = group.computeCartesianPath(waypoints,
-                                               0.01,  // eef_step
-                                               0.0,   // jump_threshold
-                                               trajectory);
 
-  ROS_INFO("Executing trajectory (cartesian path)");
 
-  moveit::planning_interface::MoveGroup::Plan plan;
-  plan.trajectory_ = trajectory;
-  group.execute(plan);
+  // moveit_msgs::RobotTrajectory trajectory;
+  // double fraction = group.computeCartesianPath(waypoints,
+  //                                              0.01,  // eef_step
+  //                                              0.0,   // jump_threshold
+  //                                              trajectory);
+
+  // ROS_INFO("Executing trajectory (cartesian path)");
+
+  // moveit::planning_interface::MoveGroup::Plan plan;
+  // plan.trajectory_ = trajectory;
+  // group.execute(plan);
 
   sleep(15.0);
   ros::shutdown();  

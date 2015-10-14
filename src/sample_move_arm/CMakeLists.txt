@@ -31,7 +31,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED system filesystem date_time thread)
 
 
-set(MSG_FILES PoseStampedArray.msg Point.msg Trajectory.msg)
+set(MSG_FILES PoseStampedArray.msg)
 add_message_files(DIRECTORY msg FILES ${MSG_FILES})
 generate_messages(DEPENDENCIES ${MSG_DEPS})
 

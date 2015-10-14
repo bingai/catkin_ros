@@ -22,22 +22,30 @@ struct Trajectory{
   vector< double > times;
 };
 
+// struct ProjTrajectory{
+// 	vector<double> points_dim;
+// 	// vector<double> times;
+// };
 class Dmp{
 public:
-	Dmp(double K, double D);
+	Dmp();
 	void Learning(const Trajectory &demo, double K, double D, int dimension);
 	void Planning(Point &start_state, Point &goal_state, double tau, double dt, Trajectory &plan);
 private:
-	void ComputePhase(double);
+	double ComputePhase(double);
 	void ComputeVelAcc();;
 	void ComputeF();
 	void InitializeVars();
+	double LinearFunctionApproximator(double s);
+
 	int dimension_;
 	Trajectory demonstration_;
 	double K_;
 	double D_;
 	double tau_;
 	double alpha_;
+	double start_phase_;
+	double end_phase_;
 	int num_points_;
 	int num_iter_integr_;
 	double x_start_;
@@ -48,4 +56,19 @@ private:
 	vector<double> a_demo_;
 	vector<double> f_phase_;
 	vector<double> f_target_;
+	vector< pair<double, double> > f_;
+};
+
+class DmpGroup{
+public:
+	DmpGroup();
+	void Learning(const Trajectory &demo, double K, double D);
+	void Planning(Point &start_state, Point &goal_state, double tau, double dt, Trajectory &plan);
+private:
+	int n_dim_;
+	Trajectory demo_;
+	double K_;
+	double D_;
+	vector<Dmp*> all_dmp_;
+
 };

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"dim",
+				"dim_coords"
+			],
+			[
+				"st",
+				"start_state"
+			],
+			[
+				"dime",
+				"dimension_"
+			],
+			[
 				"num",
 				"num_iter_integr_"
 			],
@@ -66,10 +78,6 @@
 			[
 				"dimen",
 				"dimension_"
-			],
-			[
-				"dime",
-				"dimension"
 			],
 			[
 				"wayp",
@@ -506,14 +514,6 @@
 			[
 				"worker",
 				"workerThread"
-			],
-			[
-				"getPo",
-				"getPortOf"
-			],
-			[
-				"work",
-				"workerThread"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "sample_move_arm/src/dmp.cpp",
 			"settings":
 			{
-				"buffer_size": 2300,
+				"buffer_size": 2651,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "/home/rahul/git/dmp/src/dmp.cpp",
 			"settings":
 			{
-				"buffer_size": 9804,
+				"buffer_size": 9904,
 				"line_ending": "Unix"
 			}
 		}
@@ -566,6 +566,26 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"pakc",
 				"Package Control: Install Package"
@@ -668,6 +688,7 @@
 	},
 	"file_history":
 	[
+		"/home/rahul/git/dmp/src/dmp.cpp",
 		"/home/rahul/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/include/sample_move_arm/dmp.h",
 		"/home/rahul/git/catkin_ws/src/sample_move_arm/CMakeLists.txt",
@@ -794,8 +815,7 @@
 		"/home/rahul/git/3-phase-commit/log/recalivelog1from0",
 		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/readme.txt",
 		"/home/rahul/git/3-phase-commit/log/recalivelog1from2",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/log_merger.py",
-		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/config/delay_bc.txt"
+		"/home/rahul/Downloads/rahulhuilgol_a1/p3,p4/log_merger.py"
 	],
 	"find":
 	{
@@ -963,7 +983,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -997,15 +1017,15 @@
 					"file": "sample_move_arm/src/dmp.cpp",
 					"settings":
 					{
-						"buffer_size": 2300,
+						"buffer_size": 2651,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2276,
-								2276
+								2505,
+								2505
 							]
 						],
 						"settings":
@@ -1014,7 +1034,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1466.0,
+						"translation.y": 1487.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1031,8 +1051,8 @@
 						"selection":
 						[
 							[
-								2918,
-								2918
+								2735,
+								2735
 							]
 						],
 						"settings":
@@ -1042,7 +1062,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 756.0,
+						"translation.y": 1188.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1069,25 +1089,31 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 4,
 					"file": "/home/rahul/git/dmp/src/dmp.cpp",
 					"settings":
 					{
-						"buffer_size": 9804,
+						"buffer_size": 9904,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7132,
-								7132
+								7976,
+								7976
 							]
 						],
 						"settings":
@@ -1095,8 +1121,8 @@
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 2932.0,
+						"translation.x": 121.0,
+						"translation.y": 3655.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1121,11 +1147,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.536603221083,
 			1.0
 		],
 		"rows":
