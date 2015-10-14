@@ -23,6 +23,8 @@
   <node name="plot_transformed" pkg="sample_move_arm" type="plot_transformed.py" respawn="false" output="screen">
   </node>
   <node name="pub_transformed" pkg="sample_move_arm" type="pub_transformed.py" respawn="false" output="screen">
+  </node>  
+  <node name="pub_teststates" pkg="sample_move_arm" type="pub_teststates.py" respawn="false" output="screen">
   </node>
 
 

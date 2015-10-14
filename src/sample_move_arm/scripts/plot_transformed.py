@@ -5,7 +5,7 @@ from visualization_msgs.msg import MarkerArray
 import rospy
 import math
 from bagger import Bagger
-
+import constants
 #Intended to be run separately. Looks like needs kinect connected as the frame is otherwise not available on rviz
 #can be checked using rostopic echo /visualization_marker_array
 
@@ -16,7 +16,7 @@ def plot_transformed():
 	rospy.init_node('plot_transformed',anonymous=True)
 	r = rospy.Rate(1)
 
-	b = Bagger()
+	b = Bagger(filename=constants.DEMO_FILE)
 	alvar_markers = b.getTransformedMarkers()
 
 	markerArray = MarkerArray()

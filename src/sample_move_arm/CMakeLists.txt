@@ -62,7 +62,7 @@ add_executable(move_arm src/move_arm.cpp src/dmp.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS move_arm DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/bagger.py scripts/plot_transformed.py scripts/pub_transformed.py 
+catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/bagger.py scripts/plot_transformed.py scripts/pub_transformed.py scripts/pub_teststates.py scripts/constants.py  
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

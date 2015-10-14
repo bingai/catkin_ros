@@ -29,7 +29,7 @@ def vecToRosTransform(vec):
 	return trans
 
 class Bagger:
-	def __init__(self, topic='ar_pose_marker', filename='/home/rahul/git/catkin_ws/src/sample_move_arm/bag/square.bag'):
+	def __init__(self, topic='ar_pose_marker', filename):
 		self.topic = topic
 		self.filename = filename
 		self.bag = rosbag.Bag(filename, 'r')
@@ -51,14 +51,6 @@ class Bagger:
 			count+=1
 		return waypoints
 
-	# def getTransformedPoses(self):
-	# 	#converts pose stamped to pose
-	# 	transformed_waypoints = self.getTransformedPosesStamped()
-	# 	waypoints = []
-	# 	count =1
-	# 	for twp in transformed_waypoints:
-	# 		waypoints.append(twp.pose)
-	# 	return waypoints
 
 	def getTransformedPosesStamped(self):
 		#sends waypoints with time alogn with them. PoseStamped
@@ -124,3 +116,38 @@ class Bagger:
 			# count+=1
 
 		return waypoints
+
+
+	#ar_track markers. for plotting
+	def transformStartGoal(self, state_markers):
+		#for plotting
+		origin_marker = self.getOrigin()
+		# print origin_marker
+		tformer = tf.TransformerROS(True, rospy.Duration(10.0))
+		#Make a transformation from torso to the current wrist pose
+		m = geometry_msgs.msg.TransformStamped()
+		m.header.frame_id = 'camera_depth_optical_frame'
+		m.child_frame_id = 'r_wrist_roll_link'
+		m.transform = vecToRosTransform(rosPoseToVec(origin_marker))
+		tformer.setTransform(m)		
+		
+		waypoints = []
+		
+		# count = 0
+		for wp in state_markers:
+			wpstamped = wp.pose
+			wpstamped.header.frame_id = wp.header.frame_id
+			twp = tformer.transformPose('r_wrist_roll_link', wpstamped)
+			wp.pose = twp
+			wp.header.frame_id = wp.pose.header.frame_id
+			waypoints.append(wp)
+		return waypoints
+
+	# def getTransformedPoses(self):
+	# 	#converts pose stamped to pose
+	# 	transformed_waypoints = self.getTransformedPosesStamped()
+	# 	waypoints = []
+	# 	count =1
+	# 	for twp in transformed_waypoints:
+	# 		waypoints.append(twp.pose)
+	# 	return waypoints

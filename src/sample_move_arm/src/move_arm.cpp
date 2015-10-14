@@ -1,7 +1,5 @@
 #include <moveit/move_group_interface/move_group.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
-#include <boost/foreach.hpp>
-
 #include <moveit_msgs/DisplayRobotState.h>
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <moveit_msgs/AttachedCollisionObject.h>
@@ -11,10 +9,15 @@
 #include <sample_move_arm/dmp.h>
 #include <cmath>
 
+const double tau = 5.0;
+
 using namespace std;
 
-std::vector<geometry_msgs::PoseStamped> demoPoseStamped;
+vector<geometry_msgs::PoseStamped> demoPoseStamped;
+vector<geometry_msgs::Pose> testPoses;
+
 bool data_assigned = false;
+bool test_assigned = false;
 
 void receivePSArray(sample_move_arm::PoseStampedArray ar)
 {
@@ -24,6 +27,18 @@ void receivePSArray(sample_move_arm::PoseStampedArray ar)
       demoPoseStamped.push_back(ar.poses[i]);
 
     data_assigned = true;
+  }
+  // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
+}
+
+void receiveTestArray(geometry_msgs::PoseArray ar)
+{
+  if(!test_assigned)
+  { 
+    for(int i=0; i<ar.poses.size(); i++)
+      testPoses.push_back(ar.poses[i]);
+
+    test_assigned = true;
   }
   // std::cout<<" I heard "<<ar.poses[0].position.x<<" "<<ar.poses[0].position.y<<" "<<ar.poses[0].position.z<<std::endl;
 }
@@ -63,6 +78,25 @@ void ConvertTrajectoryToVecPoses(Trajectory &traj, vector<geometry_msgs::Pose> &
   }
 } 
 
+void ConvertPosesToPoints(Point &start, Point &goal)
+{
+    start.coordinates.push_back(testPoses[0].position.y);
+    start.coordinates.push_back(testPoses[0].position.x);
+    start.coordinates.push_back(testPoses[0].position.z);
+    start.coordinates.push_back(testPoses[0].orientation.x);
+    start.coordinates.push_back(testPoses[0].orientation.y);
+    start.coordinates.push_back(testPoses[0].orientation.z);
+    start.coordinates.push_back(testPoses[0].orientation.w);
+    goal.coordinates.push_back(testPoses[1].position.y);
+    goal.coordinates.push_back(testPoses[1].position.x);
+    goal.coordinates.push_back(testPoses[1].position.z);
+    goal.coordinates.push_back(testPoses[1].orientation.x);
+    goal.coordinates.push_back(testPoses[1].orientation.y);
+    goal.coordinates.push_back(testPoses[1].orientation.z);
+    goal.coordinates.push_back(testPoses[1].orientation.w);
+  
+} 
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "move_arm");
@@ -85,22 +119,28 @@ int main(int argc, char **argv)
     sleep(1);
   }
 
+  ros::Subscriber sub2 = node_handle.subscribe("pub_teststates", 1000, receiveTestArray);
+  while(!test_assigned)
+  {
+    sleep(1);
+  }
 
-  Trajectory demonstration;
+
+  Trajectory demonstration, plan;
   ConvertDataToTrajectory(demonstration);
+  Point start, goal;
+  ConvertPosesToPoints(start, goal);
+
   DmpGroup d;
   
-  // vector<double> K, D;
-  // for(int i =0; i<demonstration.points.front().coordinates.size(); i++)
-  //   {
-  //     K.push_back(0.5);
-  //     D.push_back(sqrt(K[i])*2);
-  //   }
 
   double K=0.5;
   double D = sqrt(K)*2;
   d.Learning(demonstration, K, D);
-  // d.Planning()
+  d.Planning(start, goal, tau, 0.5, plan);
+
+  vector<geometry_msgs::Pose> poses;
+  ConvertTrajectoryToVecPoses(plan, poses);
 
 // robot_state::RobotState start_state(*group.getCurrentState());
 // // // start_state.printStateInfo(std::cout);
@@ -132,6 +172,12 @@ int main(int argc, char **argv)
   return 0;
 }
 
+  // vector<double> K, D;
+  // for(int i =0; i<demonstration.points.front().coordinates.size(); i++)
+  //   {
+  //     K.push_back(0.5);
+  //     D.push_back(sqrt(K[i])*2);
+  //   }
 
 
 

@@ -13,7 +13,7 @@ def pub_transformed():
 	pub = rospy.Publisher('pub_transformed', PoseStampedArray, queue_size=10)
 	rospy.init_node('pub_transformed', anonymous=True)
 	rate = rospy.Rate(1) # 10hz
-	b = Bagger()
+	b = Bagger(filename=constants.DEMO_FILE)
 	posarr = PoseStampedArray()
 	posarr.header.frame_id = 'r_wrist_roll_link'
 	posarr.header.stamp = rospy.get_rostime()
