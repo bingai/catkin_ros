@@ -544,30 +544,6 @@ src/move_arm.cpp.s:
 	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/move_arm.cpp.s
 .PHONY : src/move_arm.cpp.s
 
-src/plot_plan.o: src/plot_plan.cpp.o
-.PHONY : src/plot_plan.o
-
-# target to build an object file
-src/plot_plan.cpp.o:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o
-.PHONY : src/plot_plan.cpp.o
-
-src/plot_plan.i: src/plot_plan.cpp.i
-.PHONY : src/plot_plan.i
-
-# target to preprocess a source file
-src/plot_plan.cpp.i:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.i
-.PHONY : src/plot_plan.cpp.i
-
-src/plot_plan.s: src/plot_plan.cpp.s
-.PHONY : src/plot_plan.s
-
-# target to generate assembly for a file
-src/plot_plan.cpp.s:
-	cd /home/rahul/git/catkin_ws/build && $(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.s
-.PHONY : src/plot_plan.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -612,9 +588,6 @@ help:
 	@echo "... src/move_arm.o"
 	@echo "... src/move_arm.i"
 	@echo "... src/move_arm.s"
-	@echo "... src/plot_plan.o"
-	@echo "... src/plot_plan.i"
-	@echo "... src/plot_plan.s"
 .PHONY : help
 
 

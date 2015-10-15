@@ -6,6 +6,7 @@ import geometry_msgs
 import tf
 import rospy
 import constants
+
 def rosPoseToVec(pose):
 	vec = [0]*7
 	vec[0] = pose.position.x
@@ -29,7 +30,7 @@ def vecToRosTransform(vec):
 	return trans
 
 class Bagger:
-	def __init__(self, filename, topic='/ar_pose_marker'):
+	def __init__(self, filename, topic='ar_pose_marker'):
 		self.topic = topic
 		self.filename = filename
 		self.bag = rosbag.Bag(filename, 'r')
@@ -41,20 +42,6 @@ class Bagger:
 			if len(msg.markers):
 				return msg.markers[0].pose.pose
 
-	# #returns markers ar markers
-	# def getMarkers(self):
-	# 	waypoints = []
-	# 	count = 0
-	# 	obj_once = False
-
-	# 	for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
-	# 		if len(msg.markers):
-	# 			if msg.markers[0].id == 1:
-	# 				waypoints.append(msg.markers[0])
-	# 				# print msg.markers[0]
-	# 			count+=1
-	# 	return waypoints
-
 	#returns markers ar markers
 	def getMarkers(self):
 		waypoints = []
@@ -62,19 +49,33 @@ class Bagger:
 		obj_once = False
 
 		for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
-			# if not obj_once:
-			
-			# print msg
-			# if msg.markers[0].id ==1:
-				# obj_once = True
 			if len(msg.markers):
-				if msg.markers[1].id == 1:
-					# print 'in'
-					waypoints.append(msg.markers[1])
+				if msg.markers[0].id == 0:
+					waypoints.append(msg.markers[0])
 					# print msg.markers[0]
 				count+=1
-		# print count
 		return waypoints
+
+	#returns markers ar markers for shobhit
+	# def getMarkers(self):
+	# 	waypoints = []
+	# 	count = 0
+	# 	obj_once = False
+
+	# 	for topic, msg, t in self.bag.read_messages(topics=[self.topic]):
+	# 		# if not obj_once:
+			
+	# 		# print msg
+	# 		# if msg.markers[0].id ==1:
+	# 			# obj_once = True
+	# 		if len(msg.markers):
+	# 			if msg.markers[1].id == 1:
+	# 				# print 'in'
+	# 				waypoints.append(msg.markers[1])
+	# 				# print msg.markers[0]
+	# 			count+=1
+	# 	# print count
+	# 	return waypoints
 
 
 	def getTransformedPosesStamped(self):

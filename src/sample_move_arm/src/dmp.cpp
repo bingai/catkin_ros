@@ -14,10 +14,10 @@
 #include <cmath>
 #include <algorithm>
 #include <fstream>
-
+#include <cstdlib>
 using namespace std;
 
-Dmp::Dmp()
+Dmp::Dmp(bool policy)
 {
 	num_iter_integr_ = 10000;
 	goal_threshold_ = 0.0001;
@@ -25,6 +25,7 @@ Dmp::Dmp()
 	//dont need to change ever
 	start_phase_ = 1;
 	end_phase_ = 0.01;
+	policy_ = policy;
 	Clear();
 }
 
@@ -111,6 +112,45 @@ void Dmp::ComputeF()
 	// ofile.close();
 }
 
+void Dmp::SearchForParam(Point start_state, Point goal_state, double tau, double time_res)
+{
+	Trajectory t1;
+	param_ = 0.5;
+	Planning(start_state, goal_state, tau, time_res, t1);
+	double min_cost = Cost(t1, goal_state);
+	for(int i =0; i<10; i++)
+	{	
+		int randomNum = rand() % 19 + (-9);
+		randomNum/=100; //to get number in range -0.09 to 0.09
+
+		double p = param_ + randomNum;
+		Trajectory t;
+		Planning(start_state, goal_state, tau, time_res, t);
+		if(Cost(t, goal_state)<min_cost)
+		{
+			param_ = p;
+			min_cost = Cost(t, goal_state);
+		}
+
+		else
+		{
+			p = param_;
+		}
+	}
+}
+
+double Dmp::Cost(Trajectory &plan, Point &goal_state)
+{
+
+	double d=0;
+	for (int i = 0 ; i< plan.points.front().coordinates.size(); i++)
+	{
+		d+=pow((plan.points.back().coordinates[i] - goal_state.coordinates[i]), 2);
+	}
+	d = sqrt(d);
+	return d;
+}
+
 void Dmp::InitializeVars()
 {
 	tau_ = demonstration_.times.back();
@@ -124,8 +164,14 @@ void Dmp::InitializeVars()
 	for(int i=0; i<num_points_; i++)
 		x_demo_.push_back(demonstration_.points[i].coordinates[dimension_]);
 
+	cout<<"Start and goal in dim="<<dimension_<<endl;
 	x_start_ = x_demo_.front();
 	x_goal_ = x_demo_.back();
+	
+	cout<<x_start_<<" ";
+	cout<<x_goal_<<endl;
+
+
 }
 
 void Dmp::Learning(const Trajectory &demo, const double &K, const double &D, const int &dimension)
@@ -179,6 +225,12 @@ void Dmp::Planning(const Point &start_state, const Point &goal_state, const doub
 	vector<double> times;
 	vector<Point> traj_points;
 
+
+
+	if(policy_)
+	{
+		SearchForParam(start_state, goal_state, tau, time_res);
+	}
 	//for inside loop
 	double phase, f_s;
 	double x = plan_start_;
@@ -188,8 +240,12 @@ void Dmp::Planning(const Point &start_state, const Point &goal_state, const doub
 		for(int i=0; i<num_iter_integr_; i++)
 		{	
 
-			phase = ComputePhase(t);
-			f_s = LinearFunctionApproximator(phase);
+			phase = ComputePhase(t+(dt*i));
+			if(!policy_)
+				f_s = LinearFunctionApproximator(phase);
+			else
+				f_s = ParamLinearFunctionApproximator(phase);
+			// cout<<f_s<<endl;
 			double v_dot = K_*(plan_goal_ - x) - D_*v;
 			v_dot -= K_*(plan_goal_ - plan_start_)*phase;
 			v_dot += K_*f_s;
@@ -207,14 +263,14 @@ void Dmp::Planning(const Point &start_state, const Point &goal_state, const doub
 		// cout<<"1"<<endl;
 		Point p;
 		p.coordinates.push_back(x);
-		cout<<x<<" ";
+		// cout<<x<<" ";
 		// cout<<"2"<<endl;
 		times.push_back(t);
 		// cout<<"3"<<endl;
 		plan.points.push_back(p);
 		// cout<<"4"<<endl;
 	}
-	cout<<endl;
+	// cout<<endl;
 	plan.times = times;
 	// cout<<"5"<<endl;
 	// cout<<"Dim "<<dimension_<<" planned path with length "<<traj_coords.size()<<" and final coord is "<<traj_coords.back()<<". Time is "<<t<<endl;
@@ -224,7 +280,7 @@ void Dmp::Planning(const Point &start_state, const Point &goal_state, const doub
 
 double Dmp::LinearFunctionApproximator(double s)
 {	
-	if(s>1.0 || s<0.0)
+	if(s>1.0 || s<=0.0)
 		return 0.0;
 	
 	int j;
@@ -239,23 +295,69 @@ double Dmp::LinearFunctionApproximator(double s)
 	if(f_phase_[i]==s)
 		return f_target_[i];
 
-	if(i==0) //larger than any demo phase //extrapolation in this case
-		j = i+1;
+	if(s>f_phase_[0]) //larger than any demo phase //extrapolation in this case
+	{
+		return (f_target_[0]/f_phase_[0] )* (1.0 - s);
+
+	}
 
 	else if(i==num_points_-1)
-		j = num_points_-1;
+	{
+		return (f_target_[num_points_-1]/f_phase_[num_points_-1])*s;
+
+	}
 		
 	else
+	{
 		j = i-1;
-
 		//at i element is smaller. i-1 is larger
 		//
 		double slope = (f_target_[i] - f_target_[j])/(f_phase_[i] - f_phase_[j]);
 		return f_target_[i] + slope* (s-f_phase_[i]);
+	}
 }
 
-DmpGroup::DmpGroup(){
+double Dmp::ParamLinearFunctionApproximator(double s)
+{	
+	//param in range 0-1
+	if(s>1.0 || s<=0.0)
+		return 0.0;
+	
+	int j;
 
+	int i=0;
+	while(f_phase_[i]>s && i<num_points_)
+	{
+		i++;
+	}
+	//new i is lower than s or equal to s
+
+	if(f_phase_[i]==s)
+		return f_target_[i];
+
+	if(s>f_phase_[0]) //larger than any demo phase //extrapolation in this case
+	{
+		return param_*((f_target_[0]/f_phase_[0] )* (1.0 - s));
+
+	}
+
+	else if(i==num_points_-1)
+	{
+		return param_*((f_target_[num_points_-1]/f_phase_[num_points_-1])*s);
+
+	}
+		
+	else
+	{
+		j = i-1;
+		//at i element is smaller. i-1 is larger
+		//
+		double slope = (f_target_[i] - f_target_[j])/(f_phase_[i] - f_phase_[j]);
+		return f_target_[i] + slope*(param_*(s-f_phase_[i]));
+	}
+}
+DmpGroup::DmpGroup(bool policy){
+	policy_ = policy;
 }
 
 void DmpGroup::Learning(const Trajectory &demo, const double K, const double D)
@@ -266,7 +368,7 @@ void DmpGroup::Learning(const Trajectory &demo, const double K, const double D)
 	n_dim_ = demo.points.front().coordinates.size();
 	for(int i = 0 ; i<n_dim_; i++)
 	{
-	  Dmp* d = new Dmp();
+	  Dmp* d = new Dmp(policy_);
 	  d->Learning(demo_, K_, D_, i);
 	  all_dmp_.push_back(d);
 	}
@@ -276,7 +378,18 @@ void DmpGroup::Learning(const Trajectory &demo, const double K, const double D)
 
 void DmpGroup::Planning(const Point &start_state, const Point &goal_state, const double tau, const double time_res, Trajectory &final_plan)
 {
-	cout<<"Planning started"<<endl;
+    cout<<"Planning start state is ";
+	for(int p = 0; p<start_state.coordinates.size();p++)
+		cout<<p<<":"<<start_state.coordinates[p]<<",";
+	cout<<endl;
+
+	cout<<"Planning goal state is ";
+	for(int p = 0; p<goal_state.coordinates.size();p++)
+		cout<<p<<":"<<goal_state.coordinates[p]<<",";
+	cout<<endl;
+    
+
+	// cout<<"Planning started"<<endl;
 	for(int i =0; i<n_dim_; i++)
 	{
 		Trajectory projection_traj;
@@ -288,7 +401,7 @@ void DmpGroup::Planning(const Point &start_state, const Point &goal_state, const
 		int c = 0;
 		for(int j=0; j<projection_traj.points.size(); j++)
 		{
-			cout<<"Point "<<c<<": ";
+			// cout<<"Point "<<c<<": ";
 			if(!i)
 			{
 				Point p;
@@ -299,6 +412,7 @@ void DmpGroup::Planning(const Point &start_state, const Point &goal_state, const
 			{
 				final_plan.points[j].coordinates.push_back(projection_traj.points[j].coordinates[0]);
 			}
+			c++;
 		}
 	}
 	cout<<"Final plan is of length "<<final_plan.points.size()<<endl;

@@ -92,41 +92,16 @@ sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o.provides: sample_move_arm/
 
 sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o.provides.build: sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o
 
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o: sample_move_arm/CMakeFiles/move_arm.dir/flags.make
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o: /home/rahul/git/catkin_ws/src/sample_move_arm/src/plot_plan.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rahul/git/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o"
-	cd /home/rahul/git/catkin_ws/build/sample_move_arm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/move_arm.dir/src/plot_plan.cpp.o -c /home/rahul/git/catkin_ws/src/sample_move_arm/src/plot_plan.cpp
-
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/move_arm.dir/src/plot_plan.cpp.i"
-	cd /home/rahul/git/catkin_ws/build/sample_move_arm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rahul/git/catkin_ws/src/sample_move_arm/src/plot_plan.cpp > CMakeFiles/move_arm.dir/src/plot_plan.cpp.i
-
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/move_arm.dir/src/plot_plan.cpp.s"
-	cd /home/rahul/git/catkin_ws/build/sample_move_arm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rahul/git/catkin_ws/src/sample_move_arm/src/plot_plan.cpp -o CMakeFiles/move_arm.dir/src/plot_plan.cpp.s
-
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.requires:
-.PHONY : sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.requires
-
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.provides: sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.requires
-	$(MAKE) -f sample_move_arm/CMakeFiles/move_arm.dir/build.make sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.provides.build
-.PHONY : sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.provides
-
-sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.provides.build: sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o
-
 # Object files for target move_arm
 move_arm_OBJECTS = \
 "CMakeFiles/move_arm.dir/src/move_arm.cpp.o" \
-"CMakeFiles/move_arm.dir/src/dmp.cpp.o" \
-"CMakeFiles/move_arm.dir/src/plot_plan.cpp.o"
+"CMakeFiles/move_arm.dir/src/dmp.cpp.o"
 
 # External object files for target move_arm
 move_arm_EXTERNAL_OBJECTS =
 
 /home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: sample_move_arm/CMakeFiles/move_arm.dir/src/move_arm.cpp.o
 /home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o
-/home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o
 /home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: /opt/ros/hydro/lib/libmoveit_common_planning_interface_objects.so
 /home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: /opt/ros/hydro/lib/libmoveit_planning_scene_interface.so
 /home/rahul/git/catkin_ws/devel/lib/sample_move_arm/move_arm: /opt/ros/hydro/lib/libmoveit_move_group_interface.so
@@ -316,7 +291,6 @@ sample_move_arm/CMakeFiles/move_arm.dir/build: /home/rahul/git/catkin_ws/devel/l
 
 sample_move_arm/CMakeFiles/move_arm.dir/requires: sample_move_arm/CMakeFiles/move_arm.dir/src/move_arm.cpp.o.requires
 sample_move_arm/CMakeFiles/move_arm.dir/requires: sample_move_arm/CMakeFiles/move_arm.dir/src/dmp.cpp.o.requires
-sample_move_arm/CMakeFiles/move_arm.dir/requires: sample_move_arm/CMakeFiles/move_arm.dir/src/plot_plan.cpp.o.requires
 .PHONY : sample_move_arm/CMakeFiles/move_arm.dir/requires
 
 sample_move_arm/CMakeFiles/move_arm.dir/clean:

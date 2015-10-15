@@ -58,7 +58,7 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${EIGEN_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
 
-add_executable(move_arm src/move_arm.cpp src/dmp.cpp src/plot_plan.cpp)
+add_executable(move_arm src/move_arm.cpp src/dmp.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS move_arm DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 

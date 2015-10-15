@@ -28,7 +28,7 @@ struct Trajectory{
 // };
 class Dmp{
 public:
-	Dmp();
+	Dmp(bool);
 	void Learning(const Trajectory &demo, const double &K, const double &D, const int &dimension);
 	void Planning(const Point &start_state, const Point &goal_state, const double &tau, const double &dt, Trajectory &plan);
 private:
@@ -38,6 +38,11 @@ private:
 	void ComputeF();
 	void InitializeVars();
 	double LinearFunctionApproximator(double s);
+	double ParamLinearFunctionApproximator(double s);
+	void SearchForParam(Point start_state, Point goal_state, double tau, double dt);
+	double Cost(Trajectory &plan, Point &goal_state);
+
+
 	bool IsNearGoal(double);
 	int dimension_;
 	Trajectory demonstration_;
@@ -57,8 +62,9 @@ private:
 	vector<double> a_demo_;
 	vector<double> f_phase_;
 	vector<double> f_target_;
-
+	bool policy_;
 	double plan_start_;
+	double param_;
 	double plan_goal_;
 	// vector< pair<double, double> > f_;
 
@@ -67,7 +73,7 @@ private:
 
 class DmpGroup{
 public:
-	DmpGroup();
+	DmpGroup(bool);
 	void Learning(const Trajectory &demo, const double K, const double D);
 	void Planning(const Point &start_state, const Point &goal_state, const double tau, const double dt, Trajectory &plan);
 private:
@@ -76,5 +82,6 @@ private:
 	double K_;
 	double D_;
 	vector<Dmp*> all_dmp_;
+	bool policy_;
 
 };

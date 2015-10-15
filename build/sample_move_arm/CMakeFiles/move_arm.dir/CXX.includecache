@@ -52,7 +52,7 @@ vector
 std_msgs/Time.h
 -
 
-/home/rahul/git/catkin_ws/src/sample_move_arm/src/dmp.cpp
+/home/rahul/git/catkin_ws/src/sample_move_arm/src/move_arm.cpp
 moveit/move_group_interface/move_group.h
 -
 moveit/planning_scene_interface/planning_scene_interface.h
@@ -67,21 +67,15 @@ moveit_msgs/CollisionObject.h
 -
 geometry_msgs/PoseArray.h
 -
-visualization_msgs/MarkerArray.h
--
-visualization_msgs/Marker.h
--
-iostream
--
-vector
+sample_move_arm/PoseStampedArray.h
 -
 sample_move_arm/dmp.h
--
-sample_move_arm/PoseStampedArray.h
 -
 cmath
 -
 algorithm
+-
+iterator
 -
 fstream
 -

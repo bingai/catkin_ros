@@ -3,9 +3,6 @@
 	[
 		{
 			"path": "sample_move_arm"
-		},
-		{
-			"path": "ar_track_alvar_msgs"
 		}
 	]
 }
