@@ -29,15 +29,16 @@ struct Trajectory{
 class Dmp{
 public:
 	Dmp();
-	void Learning(const Trajectory &demo, double K, double D, int dimension);
-	void Planning(Point &start_state, Point &goal_state, double tau, double dt, Trajectory &plan);
+	void Learning(const Trajectory &demo, const double &K, const double &D, const int &dimension);
+	void Planning(const Point &start_state, const Point &goal_state, const double &tau, const double &dt, Trajectory &plan);
 private:
+	void Clear();
 	double ComputePhase(double);
 	void ComputeVelAcc();;
 	void ComputeF();
 	void InitializeVars();
 	double LinearFunctionApproximator(double s);
-
+	bool IsNearGoal(double);
 	int dimension_;
 	Trajectory demonstration_;
 	double K_;
@@ -48,22 +49,27 @@ private:
 	double end_phase_;
 	int num_points_;
 	int num_iter_integr_;
-	double x_start_;
-	double x_goal_; 
+	double x_start_; //demo
+	double x_goal_; 	//demo
 	vector<double> times_;
 	vector<double> x_demo_;
 	vector<double> v_demo_;
 	vector<double> a_demo_;
 	vector<double> f_phase_;
 	vector<double> f_target_;
-	vector< pair<double, double> > f_;
+
+	double plan_start_;
+	double plan_goal_;
+	// vector< pair<double, double> > f_;
+
+	double goal_threshold_;
 };
 
 class DmpGroup{
 public:
 	DmpGroup();
-	void Learning(const Trajectory &demo, double K, double D);
-	void Planning(Point &start_state, Point &goal_state, double tau, double dt, Trajectory &plan);
+	void Learning(const Trajectory &demo, const double K, const double D);
+	void Planning(const Point &start_state, const Point &goal_state, const double tau, const double dt, Trajectory &plan);
 private:
 	int n_dim_;
 	Trajectory demo_;

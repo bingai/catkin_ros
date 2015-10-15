@@ -58,11 +58,11 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${EIGEN_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
 
-add_executable(move_arm src/move_arm.cpp src/dmp.cpp)
+add_executable(move_arm src/move_arm.cpp src/dmp.cpp src/plot_plan.cpp)
 target_link_libraries(move_arm ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS move_arm DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/bagger.py scripts/plot_transformed.py scripts/pub_transformed.py scripts/pub_teststates.py scripts/constants.py  
+catkin_install_python(PROGRAMS scripts/plot_poses.py scripts/bagger.py scripts/plot_transformed.py scripts/pub_transformed.py scripts/constants.py scripts/plot_plan.py  
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

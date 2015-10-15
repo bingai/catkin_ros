@@ -18,7 +18,7 @@ def plot_poses():
 
 	b = Bagger(filename=constants.DEMO_FILE)
 	alvar_markers = b.getMarkers()
-
+	# print alvar_markers
 	markerArray = MarkerArray()
 
 	i = 0
@@ -26,6 +26,7 @@ def plot_poses():
 	for alvar_marker in alvar_markers:
 		marker = Marker()
 		marker.header.frame_id = alvar_marker.header.frame_id
+		# print marker.header.frame_id
 		marker.header.stamp = rospy.get_rostime()
 		marker.ns = "visualization_markers"
 		marker.id = i
@@ -53,7 +54,7 @@ def plot_poses():
 
 	while not rospy.is_shutdown():
 		publisher.publish(markerArray)
-		print "publishing marker arry"
+		# print "publishing marker arry"
 		r.sleep()
 
 

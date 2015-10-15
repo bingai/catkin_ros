@@ -7,6 +7,7 @@ import geometry_msgs
 import tf
 import rospy
 from bagger import Bagger
+import constants
 # from std_msgs.msg import String
 
 def pub_transformed():
@@ -23,7 +24,7 @@ def pub_transformed():
 	while not rospy.is_shutdown():
 		pub.publish(posarr)
 		rate.sleep()
-		print "publishing transformed_waypoints_posestamped"
+		# print "publishing transformed_waypoints_posestamped"
 
 
 if __name__ == '__main__':
